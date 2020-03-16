@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import api from '../../services/Api';
 import Moment from 'moment';
 import MapComponent from '../map';
@@ -27,7 +27,7 @@ function Main() {
     }
 
     return deliveries ? (
-        <div className="container">
+        <Fragment>
             <div className="delivery-list">
                 <h1>Lista de Entregas</h1>
                 {deliveries.map(delivery => (
@@ -38,9 +38,11 @@ function Main() {
                         <strong>Data de Entrega: </strong><span>{Moment(delivery.data_entrega).format('DD/MM/YYYY')}</span><br />
                     </article>
                 ))}
+            </div>
+            <div className="map">
                 <MapComponent origin={selectDelivery.origin} destination={selectDelivery.destination}/>
             </div>
-        </div>
+        </Fragment>
     ) : (
             <div>Loading...</div>
         );
