@@ -29,7 +29,9 @@ function Main() {
     return deliveries ? (
         <Fragment>
             <div className="delivery-list">
-                <h1>Lista de Entregas</h1>
+                <div className="header">
+                    <h1>Lista de Entregas</h1><a href="/store" title="Nova Entrega">+</a>
+                </div>
                 {deliveries.map(delivery => (
                     <article key={delivery.id} onClick={() => handleSelectDelivery(delivery.ponto_partida, delivery.ponto_destino)}>
                         <strong>{delivery.nome_cliente}</strong><br />
@@ -44,7 +46,7 @@ function Main() {
             </div>
         </Fragment>
     ) : (
-            <div>Loading...</div>
+            <div className="loading"><h3>Loading...</h3></div>
         );
 };
 
